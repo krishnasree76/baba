@@ -195,9 +195,65 @@ const Navbar = () => {
                 <X size={24} />
               </button>
 
-              <nav className="flex flex-col gap-6 uppercase text-baba-primary font-medium">
+              <nav className="flex flex-col uppercase text-baba-primary font-medium">
 
-                <Link to="/" onClick={() => setIsOpen(false)}>
+  {/* Home */}
+  <Link 
+    to="/" 
+    onClick={() => setIsOpen(false)}
+    className="py-3 border-b"
+  >
+    Home
+  </Link>
+
+  {/* Categories */}
+  <div className="py-3 border-b">
+    <p className="mb-3">Categories</p>
+
+    <div className="flex flex-col gap-3 pl-3 text-sm">
+      {categoryLinks.map((cat) => (
+        <Link
+          key={cat.name}
+          to={cat.link}
+          onClick={() => setIsOpen(false)}
+          className="hover:text-baba-accent transition"
+        >
+          {cat.name}
+        </Link>
+      ))}
+    </div>
+  </div>
+
+  {/* Popular Collection */}
+  <Link 
+    to="/shop" 
+    onClick={() => setIsOpen(false)}
+    className="py-3 border-b"
+  >
+    Popular Collection
+  </Link>
+
+  {/* Budget Friendly */}
+  <Link 
+    to="/shop" 
+    onClick={() => setIsOpen(false)}
+    className="py-3 border-b"
+  >
+    Budget Friendly
+  </Link>
+
+  {/* Contact */}
+  <Link 
+    to="/contact" 
+    onClick={() => setIsOpen(false)}
+    className="py-3"
+  >
+    Contact Us
+  </Link>
+
+
+
+                {/* <Link to="/" onClick={() => setIsOpen(false)}>
                   Home
                 </Link>
 
@@ -207,7 +263,7 @@ const Navbar = () => {
 
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   Contact
-                </Link>
+                </Link> */}
 
               </nav>
             </motion.div>
