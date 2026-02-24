@@ -1,10 +1,12 @@
-import React from 'react';
+// import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import ProductCard from '../components/ProductCard';
 import womenImage from '../assets/navysaree.png';
+import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
   const { products } = useShop();
@@ -16,6 +18,21 @@ export default function Home() {
     { name: 'frocks', image: 'https://i.pinimg.com/736x/8d/e6/6b/8de66b42cdb88eb24e478ea4b2aed7dd.jpg', link: '/shop?category=frocks' },
     { name: 'dress materials', image: 'https://i.pinimg.com/736x/32/e9/90/32e990019081da31ad9b01067fa80934.jpg', link: '/shop?category=dress%20materials' },
   ];
+  const images = [
+  "https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg",
+  "https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg",
+  "https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg",
+];
+
+const [current, setCurrent] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % images.length);
+  }, 3000); // auto slide every 3 sec
+
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <div className="w-full bg-[#F8F6F1]">
@@ -31,11 +48,31 @@ export default function Home() {
               <a href="tel:8328030460" className="bg-[#C6A75E] text-[#0B1C2D] px-4 py-2 rounded-sm text-[11px] font-bold text-center shadow-md">CALL NOW</a>
             </div>
           </div>
-          <div className="w-2/5 relative flex justify-end items-center h-[160px]">
-            <img src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg" className="absolute right-10 top-0 h-[100px] w-[75px] object-cover rounded shadow-lg rotate-[-8deg] opacity-40" alt="t1" />
-            <img src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg" className="absolute right-5 top-4 h-[115px] w-[85px] object-cover rounded shadow-xl rotate-[2deg] z-[1] border border-[#C6A75E]/50" alt="t2" />
-            <img src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg" className="absolute right-0 top-10 h-[130px] w-[95px] object-cover rounded shadow-2xl z-[2] border-2 border-[#C6A75E]" alt="t3" />
-          </div>
+          <div className="w-2/5 flex justify-end items-center h-[160px] overflow-hidden">
+
+  <motion.img
+    key={current}
+    src={images[current]}
+    drag="x"
+    dragConstraints={{ left: 0, right: 0 }}
+    onDragEnd={(e, info) => {
+      if (info.offset.x < -50) {
+        setCurrent((prev) => (prev + 1) % images.length);
+      }
+      if (info.offset.x > 50) {
+        setCurrent((prev) =>
+          prev === 0 ? images.length - 1 : prev - 1
+        );
+      }
+    }}
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -50 }}
+    transition={{ duration: 0.4 }}
+    className="h-[130px] w-[95px] object-cover rounded shadow-2xl border-2 border-[#C6A75E]"
+  />
+
+</div>
         </div>
       </section>
 
