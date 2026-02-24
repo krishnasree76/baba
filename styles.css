@@ -31,3 +31,7 @@
     @apply py-16 px-6 md:px-12;
   }
 }
+
+html,body{
+  overflow-x: hidden;
+}
