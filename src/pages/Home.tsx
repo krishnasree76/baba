@@ -39,7 +39,7 @@ import React from 'react';
         <div className="w-full">
           {/* Hero Section */}
           <section className="bg-baba-primary text-white py-14 md:py-20">
-  <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
+  <div className="container mx-auto px-4 flex flex-row items-center justify-between gap-6">
 
     {/* LEFT SIDE */}
     <div className="flex-1 text-center lg:text-left max-w-2xl">
