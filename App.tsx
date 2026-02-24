@@ -18,6 +18,7 @@ import React from 'react';
     import Contact from './src/pages/Contact';
     import NotFound from './src/pages/NotFound';
     import Wishlist from "./src/pages/Wishlist";
+    import Auth from "./src/pages/Auth";
     const App: React.FC = () => {
       return (
         <ShopProvider>
@@ -35,6 +36,7 @@ import React from 'react';
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/auth" element={<Auth />} />
               </Routes>
             </Layout>
             <ToastContainer

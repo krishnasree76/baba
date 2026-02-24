@@ -7,6 +7,7 @@ import ProductCard from '../components/ProductCard';
 import womenImage from '../assets/navysaree.png';
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Home() {
   const { products } = useShop();
@@ -29,10 +30,10 @@ const [current, setCurrent] = useState(0);
 useEffect(() => {
   const interval = setInterval(() => {
     setCurrent((prev) => (prev + 1) % images.length);
-  }, 3000); // auto slide every 3 sec
+  }, 3000);
 
   return () => clearInterval(interval);
-}, []);
+}, [images.length]);
 
   return (
     <div className="w-full bg-[#F8F6F1]">
@@ -48,29 +49,58 @@ useEffect(() => {
               <a href="tel:8328030460" className="bg-[#C6A75E] text-[#0B1C2D] px-4 py-2 rounded-sm text-[11px] font-bold text-center shadow-md">CALL NOW</a>
             </div>
           </div>
-          <div className="w-2/5 flex justify-end items-center h-[160px] overflow-hidden">
+          <div className="w-2/5 flex justify-end items-center h-[160px] relative">
 
-  <motion.img
-    key={current}
-    src={images[current]}
-    drag="x"
-    dragConstraints={{ left: 0, right: 0 }}
-    onDragEnd={(e, info) => {
-      if (info.offset.x < -50) {
-        setCurrent((prev) => (prev + 1) % images.length);
-      }
-      if (info.offset.x > 50) {
-        setCurrent((prev) =>
-          prev === 0 ? images.length - 1 : prev - 1
-        );
-      }
-    }}
-    initial={{ opacity: 0, x: 50 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -50 }}
-    transition={{ duration: 0.4 }}
-    className="h-[130px] w-[95px] object-cover rounded shadow-2xl border-2 border-[#C6A75E]"
-  />
+  {/* LEFT ARROW */}
+  <button
+    onClick={() =>
+      setCurrent((prev) =>
+        prev === 0 ? images.length - 1 : prev - 1
+      )
+    }
+    className="absolute left-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
+  >
+    <ChevronLeft size={14} className="text-black" />
+  </button>
+
+  {/* IMAGE SLIDER */}
+  <div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
+
+    <AnimatePresence mode="wait">
+      <motion.img
+        key={current}
+        src={images[current]}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        onDragEnd={(e, info) => {
+          if (info.offset.x < -50) {
+            setCurrent((prev) => (prev + 1) % images.length);
+          }
+          if (info.offset.x > 50) {
+            setCurrent((prev) =>
+              prev === 0 ? images.length - 1 : prev - 1
+            );
+          }
+        }}
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -80 }}
+        transition={{ duration: 0.4 }}
+        className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white"
+      />
+    </AnimatePresence>
+
+  </div>
+
+  {/* RIGHT ARROW */}
+  <button
+    onClick={() =>
+      setCurrent((prev) => (prev + 1) % images.length)
+    }
+    className="absolute right-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
+  >
+    <ChevronRight size={14} className="text-black" />
+  </button>
 
 </div>
         </div>

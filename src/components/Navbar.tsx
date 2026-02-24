@@ -117,6 +117,12 @@ const Navbar = () => {
             <Link to="/contact" className="hover:text-baba-accent transition">
               Contact Us
             </Link>
+            <Link
+  to="/auth"
+  className="hidden md:flex items-center gap-1 text-baba-primary hover:text-baba-accent transition"
+>
+  <User size={22} />
+</Link>
 
           </nav>
 
@@ -250,6 +256,17 @@ const Navbar = () => {
   >
     Contact Us
   </Link>
+  <div className="mt-6 border-t pt-6 flex flex-col gap-4">
+
+  <Link
+    to="/auth"
+    onClick={() => setIsOpen(false)}
+    className="bg-baba-primary text-white text-center py-2 rounded"
+  >
+    Login / Sign Up
+  </Link>
+
+</div>
 
 
 
