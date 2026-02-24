@@ -38,49 +38,69 @@ import React from 'react';
       return (
         <div className="w-full">
           {/* Hero Section */}
-          <section className="bg-baba-primary text-white py-14 md:py-20">
-  <div className="container mx-auto px-4 flex flex-row items-center justify-between gap-6">
+          <section className="bg-baba-primary text-white md:hidden">
 
-    {/* LEFT SIDE */}
-    <div className="flex-1 text-center lg:text-left max-w-2xl">
+  <div className="h-[180px] flex items-center justify-between px-4 overflow-hidden">
 
-      {/* Small Top Text */}
-      <span className="text-baba-accent tracking-[0.3em] uppercase text-xs md:text-sm font-medium block mb-4">
-        Premium Wholesale Collections
-      </span>
-
-      {/* Main Heading */}
-      <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight">
+    {/* LEFT TEXT */}
+    <div className="w-1/2">
+      <h1 className="font-serif text-lg font-bold leading-tight">
         Baba Textiles
       </h1>
 
-      {/* Description */}
-      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+      <p className="text-white/80 text-[11px] mt-2 leading-snug">
         Best rates and best quality is our motto.
         Your trusted wholesale partner in Srikakulam.
       </p>
 
-      {/* Phone */}
-      <div className="flex items-center justify-center lg:justify-start gap-6 text-sm md:text-base tracking-widest">
-        
-        <a
-          href="tel:8328030460"
-          className="hover:text-baba-accent transition-colors duration-300"
-        >
-          8328030460
-        </a>
-
+      <div className="flex items-center gap-2 text-[11px] mt-2">
+        <span>8328030460</span>
         <span className="text-white/40">|</span>
+        <span>WhatsApp</span>
+      </div>
+    </div>
 
-        <a
-          href="https://wa.me/918328030460"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-baba-accent transition-colors duration-300"
-        >
-          WhatsApp
-        </a>
+    {/* RIGHT IMAGES */}
+    <div className="w-1/2 flex justify-end gap-2">
+      <img
+        src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
+        className="h-[130px] object-cover rounded-md"
+      />
+      <img
+        src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
+        className="h-[130px] object-cover rounded-md"
+      />
+      <img
+        src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
+        className="h-[130px] object-cover rounded-md"
+      />
+    </div>
 
+  </div>
+</section>
+<section className="bg-baba-primary text-white py-20 hidden md:block">
+  <div className="container mx-auto px-4 flex flex-row items-center justify-between gap-12">
+
+    {/* LEFT SIDE */}
+    <div className="flex-1 text-left max-w-2xl">
+
+      <span className="text-baba-accent tracking-[0.3em] uppercase text-sm font-medium block mb-4">
+        Premium Wholesale Collections
+      </span>
+
+      <h1 className="font-serif text-6xl font-bold mb-6 leading-tight">
+        Baba Textiles
+      </h1>
+
+      <p className="text-white/80 text-lg leading-relaxed mb-8">
+        Best rates and best quality is our motto.
+        Your trusted wholesale partner in Srikakulam.
+      </p>
+
+      <div className="flex items-center gap-6 text-base tracking-widest">
+        <span>8328030460</span>
+        <span className="text-white/40">|</span>
+        <span>WhatsApp</span>
       </div>
 
     </div>
@@ -88,41 +108,34 @@ import React from 'react';
     {/* RIGHT SIDE IMAGES */}
     <div className="flex-1 flex justify-center gap-5">
 
-      {/* Image 1 */}
       <div className="bg-white p-2 rounded-lg shadow-xl">
-        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+        <div className="w-44 rounded-md overflow-hidden">
           <img
             src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
-            alt="Collection 1"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
 
-      {/* Image 2 */}
       <div className="bg-white p-2 rounded-lg shadow-xl">
-        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+        <div className="w-44 rounded-md overflow-hidden">
           <img
             src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
-            alt="Collection 2"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
 
-      {/* Image 3 */}
       <div className="bg-white p-2 rounded-lg shadow-xl">
-        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+        <div className="w-44 rounded-md overflow-hidden">
           <img
             src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
-            alt="Collection 3"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
 
     </div>
-
   </div>
 </section>
 
