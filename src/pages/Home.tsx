@@ -38,41 +38,52 @@ import React from 'react';
       return (
         <div className="w-full">
           {/* Hero Section */}
-          <section className="bg-baba-primary text-white md:hidden">
-
-  <div className="h-[180px] flex items-center justify-between px-4 overflow-hidden">
-
-    {/* LEFT TEXT */}
-    <div className="w-1/2">
-      <h1 className="font-serif text-lg font-bold leading-tight">
+          <section className="bg-[#1e3a8a] text-white md:hidden overflow-hidden">
+  <div className="flex items-center px-5 py-8 min-h-[220px]">
+    
+    {/* LEFT TEXT CONTENT */}
+    <div className="w-3/5 pr-4 z-10">
+      <h1 className="font-serif text-2xl font-bold leading-tight tracking-tight">
         Baba Textiles
       </h1>
-
-      <p className="text-white/80 text-[11px] mt-2 leading-snug">
-        Best rates and best quality is our motto.
+      
+      <p className="text-white/90 text-[12px] mt-3 leading-relaxed font-light italic">
+        "Best rates and best quality is our motto."
+      </p>
+      
+      <p className="text-white/70 text-[11px] mt-1">
         Your trusted wholesale partner in Srikakulam.
       </p>
 
-      <div className="flex items-center gap-2 text-[11px] mt-2">
-        <span>8328030460</span>
-        <span className="text-white/40">|</span>
-        <span>WhatsApp</span>
+      <div className="flex items-center gap-3 mt-5">
+        <a href="tel:8328030460" className="bg-white text-[#1e3a8a] px-3 py-1.5 rounded text-[11px] font-bold flex items-center gap-1 shadow-lg">
+          <i className="fas fa-phone"></i> Call
+        </a>
+        <a href="https://wa.me/918328030460" className="text-white border border-white/30 px-3 py-1.5 rounded text-[11px] font-medium">
+          WhatsApp
+        </a>
       </div>
     </div>
 
-    {/* RIGHT IMAGES */}
-    <div className="w-1/2 flex justify-end gap-2">
+    {/* RIGHT IMAGES (Stacked/Overlap Layout) */}
+    <div className="w-2/5 relative flex justify-end items-center h-[160px]">
+      {/* Back Image */}
       <img
         src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
-        className="h-[130px] object-cover rounded-md"
+        className="absolute right-8 top-0 h-[100px] w-[70px] object-cover rounded-md border border-white/20 shadow-xl rotate-[-6deg] opacity-60"
+        alt="textile 1"
       />
+      {/* Middle Image */}
       <img
         src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
-        className="h-[130px] object-cover rounded-md"
+        className="absolute right-4 top-6 h-[110px] w-[80px] object-cover rounded-md border border-white/40 shadow-xl rotate-[4deg] z-[1]"
+        alt="textile 2"
       />
+      {/* Front Image */}
       <img
         src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
-        className="h-[130px] object-cover rounded-md"
+        className="absolute right-0 top-12 h-[120px] w-[90px] object-cover rounded-md border-2 border-white shadow-2xl z-[2]"
+        alt="textile 3"
       />
     </div>
 
