@@ -13,64 +13,121 @@ import React from 'react';
       const featuredProducts = products.slice(0, 4);
 
       const categories = [
-        { 
-  name: 'Women', 
-  image: womenImage, 
-  link: '/shop?category=Women' 
-},
-        { name: 'Men', image: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&q=80&w=600', link: '/shop?category=Men' },
-        { name: 'Kids', image: 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&q=80&w=600', link: '/shop?category=Kids' },
-        { name: 'Accessories', image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&q=80&w=600', link: '/shop?category=Accessories' },
-      ];
+  { 
+    name: 'sarees', 
+    image: womenImage, 
+    link: '/shop?category=sarees' 
+  },
+  { 
+    name: '3 piece sets', 
+    image: 'https://i.pinimg.com/736x/54/c2/98/54c298bf3a4ceb06e8a9b485b4b0fc71.jpg', 
+    link: '/shop?category=3%20piece%20sets' 
+  },
+  { 
+    name: 'frocks', 
+    image: 'https://i.pinimg.com/736x/8d/e6/6b/8de66b42cdb88eb24e478ea4b2aed7dd.jpg', 
+    link: '/shop?category=frocks' 
+  },
+  { 
+    name: 'dress materials', 
+    image: 'https://i.pinimg.com/736x/32/e9/90/32e990019081da31ad9b01067fa80934.jpg', 
+    link: '/shop?category=dress%20materials' 
+  },
+];
 
       return (
         <div className="w-full">
           {/* Hero Section */}
-          <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-baba-primary">
-            <div className="absolute inset-0 w-full h-full">
-              <img 
-          src={heroImage} 
-          alt="Luxury Textiles" 
-          className="w-full h-full object-cover object-center opacity-40 mix-blend-overlay"
-        />
-              <div className="absolute inset-0 bg-gradient-to-r from-baba-primary/90 via-baba-primary/60 to-transparent" />
-            </div>
-            
-            <div className="container relative z-10 px-4 sm:px-6 lg:px-8 flex flex-col items-start text-white max-w-7xl mx-auto w-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="max-w-2xl"
-              >
-                <span className="text-baba-accent font-medium tracking-[0.2em] uppercase text-sm mb-4 block">Premium Wholesale Collections</span>
-                <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6">
-                  Elegance Woven <br/> Into Every Thread
-                </h1>
-                <p className="text-lg text-white/80 mb-8 max-w-xl font-light leading-relaxed">
-                  Discover the finest quality textiles. Best rates and best quality is our motto. Your trusted wholesale partner in Srikakulam.
-                </p>
-                <div className="flex gap-4">
-                  <Link 
-                    to="/shop" 
-                    className="bg-baba-accent text-baba-primary px-8 py-4 rounded-sm font-semibold tracking-wide hover:bg-white transition-colors duration-300 flex items-center gap-2 group"
-                  >
-                    Shop Now
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <Link 
-                    to="/about" 
-                    className="border border-white/30 text-white px-8 py-4 rounded-sm font-medium hover:bg-white/10 transition-colors duration-300"
-                  >
-                    Our Story
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          <section className="bg-baba-primary text-white py-14 md:py-20">
+  <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
+
+    {/* LEFT SIDE */}
+    <div className="flex-1 text-center lg:text-left max-w-2xl">
+
+      {/* Small Top Text */}
+      <span className="text-baba-accent tracking-[0.3em] uppercase text-xs md:text-sm font-medium block mb-4">
+        Premium Wholesale Collections
+      </span>
+
+      {/* Main Heading */}
+      <h1 className="font-serif text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        Baba Textiles
+      </h1>
+
+      {/* Description */}
+      <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8">
+        Best rates and best quality is our motto.
+        Your trusted wholesale partner in Srikakulam.
+      </p>
+
+      {/* Phone */}
+      <div className="flex items-center justify-center lg:justify-start gap-6 text-sm md:text-base tracking-widest">
+        
+        <a
+          href="tel:8328030460"
+          className="hover:text-baba-accent transition-colors duration-300"
+        >
+          8328030460
+        </a>
+
+        <span className="text-white/40">|</span>
+
+        <a
+          href="https://wa.me/918328030460"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-baba-accent transition-colors duration-300"
+        >
+          WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* RIGHT SIDE IMAGES */}
+    <div className="flex-1 flex justify-center gap-5">
+
+      {/* Image 1 */}
+      <div className="bg-white p-2 rounded-lg shadow-xl">
+        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+          <img
+            src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
+            alt="Collection 1"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Image 2 */}
+      <div className="bg-white p-2 rounded-lg shadow-xl">
+        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+          <img
+            src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
+            alt="Collection 2"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Image 3 */}
+      <div className="bg-white p-2 rounded-lg shadow-xl">
+        <div className="w-28 md:w-40 lg:w-44 rounded-md overflow-hidden">
+          <img
+            src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
+            alt="Collection 3"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
           {/* Features Strip */}
-          <section className="bg-baba-softbg py-10 border-b border-black/5">
+          {/* <section className="bg-baba-softbg py-10 border-b border-black/5">
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-baba-primary/10">
                 <div className="flex flex-col items-center text-center px-4">
@@ -90,44 +147,57 @@ import React from 'react';
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* Categories Section */}
-          <section className="py-20 bg-baba-background">
-            <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
-                <h2 className="font-serif text-3xl md:text-4xl text-baba-primary font-bold mb-4">Shop by Category</h2>
-                <div className="w-16 h-1 bg-baba-accent mx-auto"></div>
-              </div>
+          <section className="py-16 bg-baba-background">
+  <div className="container mx-auto px-4">
+
+    {/* Heading */}
+    <div className="flex items-center justify-center gap-6 mb-12">
+      <div className="h-[1px] bg-baba-border w-20 md:w-40"></div>
+      <h2 className="font-serif text-2xl md:text-3xl text-baba-primary font-semibold tracking-wide">
+        Shop By Category
+      </h2>
+      <div className="h-[1px] bg-baba-border w-20 md:w-40"></div>
+    </div>
+
+    {/* Horizontal Scroll */}
+    <div className="flex gap-8 overflow-x-auto scrollbar-hide pb-4">
+
+      {categories.map((category, idx) => (
+        <motion.div
+          key={category.name}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: idx * 0.1 }}
+          viewport={{ once: true }}
+          className="flex-shrink-0 text-center group"
+        >
+          <Link to={category.link}>
+
+            {/* Round Image Container */}
+            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden bg-baba-softbg shadow-md border border-baba-border transition-all duration-500 group-hover:shadow-xl group-hover:border-baba-accent">
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {categories.map((category, idx) => (
-                  <motion.div
-                    key={category.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                  >
-                    <Link to={category.link} className="group relative block h-[400px] rounded-xl overflow-hidden cursor-pointer">
-                      <img 
-                        src={category.image} 
-                        alt={category.name} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity group-hover:opacity-90"></div>
-                      <div className="absolute bottom-0 left-0 p-8 w-full transform transition-transform duration-500 group-hover:-translate-y-2">
-                        <h3 className="text-2xl font-serif text-white mb-2">{category.name}</h3>
-                        <span className="text-baba-accent text-sm font-medium tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
-                          Explore <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
             </div>
-          </section>
+
+            {/* Category Name */}
+            <p className="mt-4 text-baba-textdark font-medium text-sm md:text-base">
+              {category.name}
+            </p>
+
+          </Link>
+        </motion.div>
+      ))}
+
+    </div>
+  </div>
+</section>
 
           {/* Banner Offer Section */}
           <section className="py-20 bg-baba-primary relative overflow-hidden">
@@ -150,7 +220,7 @@ import React from 'react';
             <div className="container mx-auto px-4">
               <div className="flex justify-between items-end mb-12">
                 <div>
-                  <h2 className="font-serif text-3xl md:text-4xl text-baba-primary font-bold mb-4">Featured Arrivals</h2>
+                  <h2 className="font-serif text-3xl md:text-4xl text-baba-primary font-bold mb-4">Latest Arrivals</h2>
                   <div className="w-16 h-1 bg-baba-accent"></div>
                 </div>
                 <Link to="/shop" className="hidden md:flex items-center gap-2 text-baba-primary hover:text-baba-accent font-medium transition-colors">
@@ -171,6 +241,46 @@ import React from 'react';
               </div>
             </div>
           </section>
+
+          <section className="py-20 bg-baba-background">
+  <div className="container mx-auto px-4">
+
+    {/* Section Header */}
+    <div className="flex justify-between items-end mb-12">
+      <div>
+        <h2 className="font-serif text-3xl md:text-4xl text-baba-primary font-bold mb-4">
+          Fast Selling Products
+        </h2>
+        <div className="w-16 h-1 bg-baba-accent"></div>
+      </div>
+
+      <Link
+        to="/shop"
+        className="hidden md:flex items-center gap-2 text-baba-primary hover:text-baba-accent font-medium transition-colors"
+      >
+        View All <ArrowRight className="w-4 h-4" />
+      </Link>
+    </div>
+
+    {/* Product Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {featuredProducts.slice(0, 4).map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+
+    {/* Mobile View All Button */}
+    <div className="mt-10 text-center md:hidden">
+      <Link
+        to="/shop"
+        className="inline-flex items-center gap-2 text-baba-primary border border-baba-primary px-6 py-3 rounded-sm hover:bg-baba-primary hover:text-white transition-colors"
+      >
+        View All Products
+      </Link>
+    </div>
+
+  </div>
+</section>
         </div>
       );
     }

@@ -17,7 +17,7 @@ import React from 'react';
     import About from './src/pages/About';
     import Contact from './src/pages/Contact';
     import NotFound from './src/pages/NotFound';
-    
+    import Wishlist from "./src/pages/Wishlist";
     const App: React.FC = () => {
       return (
         <ShopProvider>
@@ -34,6 +34,7 @@ import React from 'react';
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/wishlist" element={<Wishlist />} />
               </Routes>
             </Layout>
             <ToastContainer

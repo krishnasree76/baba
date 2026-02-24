@@ -37,15 +37,77 @@ import React from 'react';
 
               {/* Quick Links */}
               <div>
-                <h3 className="text-lg font-serif font-semibold text-white mb-6 tracking-wide">Quick Links</h3>
-                <ul className="space-y-4">
-                  <li><Link to="/shop" className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors">Shop All</Link></li>
-                  <li><Link to="/shop?category=Men" className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors">Men's Collection</Link></li>
-                  <li><Link to="/shop?category=Women" className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors">Women's Collection</Link></li>
-                  <li><Link to="/about" className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors">About Us</Link></li>
-                  <li><Link to="/contact" className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors">Contact</Link></li>
-                </ul>
-              </div>
+  <h3 className="text-lg font-serif font-semibold text-white mb-6 tracking-wide">
+    Quick Links
+  </h3>
+
+  <ul className="space-y-4">
+    
+    <li>
+      <Link 
+        to="/shop" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        Shop All
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/shop?category=sarees" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        Sarees
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/shop?category=3%20piece%20sets" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        3 Piece Sets
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/shop?category=frocks" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        Frocks
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/shop?category=dress%20materials" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        Dress Materials
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/about" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        About Us
+      </Link>
+    </li>
+
+    <li>
+      <Link 
+        to="/contact" 
+        className="text-sm text-baba-softbg/80 hover:text-baba-accent transition-colors"
+      >
+        Contact
+      </Link>
+    </li>
+
+  </ul>
+</div>
 
               {/* Contact Info */}
               <div>

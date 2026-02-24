@@ -14,35 +14,53 @@ import React, { useState, useMemo } from 'react';
 
       const [selectedCategory, setSelectedCategory] = useState(initialCategory);
       const [sortBy, setSortBy] = useState('featured');
+      const [selectedSize, setSelectedSize] = useState('');
+const [priceRange, setPriceRange] = useState([0, 5000]);
 
-      const categories = ['All', 'Men', 'Women', 'Kids', 'Accessories'];
+      const categories = [
+  'All',
+  'sarees',
+  '3 piece sets',
+  'frocks',
+  'dress materials'
+];
 
       const filteredProducts = useMemo(() => {
-        let result = [...products];
+  let result = [...products];
 
-        // Filter by Category
-        if (selectedCategory !== 'All') {
-          result = result.filter(p => p.category === selectedCategory);
-        }
+  // Category Filter
+  if (selectedCategory !== 'All') {
+    result = result.filter(p => p.category === selectedCategory);
+  }
 
-        // Filter by Search Query (Name or Hidden Code)
-        if (searchQuery) {
-          const query = searchQuery.toLowerCase();
-          result = result.filter(p => 
-            p.name.toLowerCase().includes(query) || 
-            p.code.toLowerCase().includes(query)
-          );
-        }
+  // Size Filter
+  if (selectedSize) {
+    result = result.filter(p => p.size === selectedSize);
+  }
 
-        // Sorting
-        if (sortBy === 'price-low') {
-          result.sort((a, b) => a.price - b.price);
-        } else if (sortBy === 'price-high') {
-          result.sort((a, b) => b.price - a.price);
-        }
+  // Price Filter
+  result = result.filter(
+    p => p.price >= priceRange[0] && p.price <= priceRange[1]
+  );
 
-        return result;
-      }, [products, selectedCategory, searchQuery, sortBy]);
+  // Search Filter
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase();
+    result = result.filter(p =>
+      p.name.toLowerCase().includes(query) ||
+      p.code.toLowerCase().includes(query)
+    );
+  }
+
+  // Sorting
+  if (sortBy === 'price-low') {
+    result.sort((a, b) => a.price - b.price);
+  } else if (sortBy === 'price-high') {
+    result.sort((a, b) => b.price - a.price);
+  }
+
+  return result;
+}, [products, selectedCategory, selectedSize, priceRange, searchQuery, sortBy]);
 
       return (
         <div className="bg-baba-softbg min-h-screen pb-20">
@@ -62,36 +80,82 @@ import React, { useState, useMemo } from 'react';
             <div className="flex flex-col md:flex-row gap-8">
               
               {/* Sidebar Filters */}
-              <aside className="w-full md:w-64 shrink-0">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-black/5 sticky top-28">
-                  <div className="flex items-center gap-2 mb-6 text-baba-primary font-serif text-xl border-b pb-4">
-                    <Filter className="w-5 h-5" />
-                    <h2>Filters</h2>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-baba-textdark mb-3 uppercase text-sm tracking-wider">Categories</h3>
-                      <div className="space-y-2">
-                        {categories.map(cat => (
-                          <label key={cat} className="flex items-center gap-3 cursor-pointer group">
-                            <input 
-                              type="radio" 
-                              name="category" 
-                              checked={selectedCategory === cat}
-                              onChange={() => setSelectedCategory(cat)}
-                              className="w-4 h-4 text-baba-accent focus:ring-baba-accent border-gray-300 rounded-sm"
-                            />
-                            <span className={`text-sm transition-colors ${selectedCategory === cat ? 'text-baba-accent font-medium' : 'text-baba-textdark/70 group-hover:text-baba-primary'}`}>
-                              {cat}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </aside>
+              <aside className="w-full md:w-72 shrink-0">
+  <div className="bg-white p-6 rounded-xl shadow-sm border border-black/5 sticky top-28">
+
+    <div className="flex items-center gap-2 mb-6 text-baba-primary font-serif text-xl border-b pb-4">
+      <Filter className="w-5 h-5" />
+      <h2>Filters</h2>
+    </div>
+
+    {/* SIZE FILTER */}
+    <div className="mb-8">
+      <h3 className="font-semibold text-baba-textdark mb-4 uppercase text-sm tracking-wider">
+        Size
+      </h3>
+
+      <div className="grid grid-cols-2 gap-3">
+        {['XS','S','M','L','XL','XXL','3XL'].map(size => (
+          <button
+            key={size}
+            onClick={() => setSelectedSize(size === selectedSize ? '' : size)}
+            className={`py-2 rounded-full border text-sm transition-all
+              ${selectedSize === size
+                ? 'bg-baba-primary text-white border-baba-primary'
+                : 'border-gray-300 text-baba-textdark hover:border-baba-accent'}
+            `}
+          >
+            {size}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* PRICE FILTER */}
+    <div className="mb-8">
+      <h3 className="font-semibold text-baba-textdark mb-4 uppercase text-sm tracking-wider">
+        Price
+      </h3>
+
+      <input
+        type="range"
+        min="0"
+        max="5000"
+        value={priceRange[1]}
+        onChange={(e) => setPriceRange([0, Number(e.target.value)])}
+        className="w-full accent-baba-accent"
+      />
+
+      <p className="text-sm mt-3 text-baba-textdark/70">
+        ₹0 — ₹{priceRange[1]}
+      </p>
+    </div>
+
+    {/* CATEGORY FILTER */}
+    <div>
+      <h3 className="font-semibold text-baba-textdark mb-4 uppercase text-sm tracking-wider">
+        Categories
+      </h3>
+
+      <div className="space-y-3">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`block text-left w-full text-sm transition-colors
+              ${selectedCategory === cat
+                ? 'text-baba-accent font-medium'
+                : 'text-baba-textdark/70 hover:text-baba-primary'}
+            `}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</aside>
 
               {/* Main Content */}
               <main className="flex-grow">
