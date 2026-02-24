@@ -38,52 +38,60 @@ import React from 'react';
       return (
         <div className="w-full">
           {/* Hero Section */}
-          <section className="bg-[#1e3a8a] text-white md:hidden overflow-hidden">
-  <div className="flex items-center px-5 py-8 min-h-[220px]">
+          <section className="bg-[#0B1C2D] text-white md:hidden overflow-hidden relative border-b-2 border-[#C6A75E]">
+  {/* Background Pattern Hint */}
+  <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#C6A75E 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
+
+  <div className="relative flex items-center px-6 py-10 min-h-[240px] z-10">
     
     {/* LEFT TEXT CONTENT */}
-    <div className="w-3/5 pr-4 z-10">
-      <h1 className="font-serif text-2xl font-bold leading-tight tracking-tight">
+    <div className="w-3/5 pr-2">
+      <h1 className="font-serif text-2xl font-bold leading-tight tracking-wide text-[#C6A75E]">
         Baba Textiles
       </h1>
       
-      <p className="text-white/90 text-[12px] mt-3 leading-relaxed font-light italic">
+      <div className="w-8 h-[2px] bg-[#C6A75E] mt-2 mb-3"></div>
+
+      <p className="text-[#F8F6F1] text-[12px] leading-relaxed font-medium">
         "Best rates and best quality is our motto."
       </p>
       
-      <p className="text-white/70 text-[11px] mt-1">
-        Your trusted wholesale partner in Srikakulam.
+      <p className="text-[#EFE8DC]/70 text-[11px] mt-1 italic">
+        Trusted Wholesale Partner in Srikakulam
       </p>
 
-      <div className="flex items-center gap-3 mt-5">
-        <a href="tel:8328030460" className="bg-white text-[#1e3a8a] px-3 py-1.5 rounded text-[11px] font-bold flex items-center gap-1 shadow-lg">
-          <i className="fas fa-phone"></i> Call
+      {/* Action Buttons */}
+      <div className="flex flex-col gap-2 mt-6">
+        <a href="tel:8328030460" className="bg-[#C6A75E] text-[#0B1C2D] px-4 py-2 rounded-sm text-[11px] font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-transform">
+          <i className="fas fa-phone-alt"></i> CALL NOW
         </a>
-        <a href="https://wa.me/918328030460" className="text-white border border-white/30 px-3 py-1.5 rounded text-[11px] font-medium">
-          WhatsApp
-        </a>
+        <div className="flex items-center gap-2 text-[10px] text-[#F8F6F1]/60 px-1">
+          <span>8328030460</span>
+          <span className="text-[#C6A75E]">|</span>
+          <span>WhatsApp</span>
+        </div>
       </div>
     </div>
 
-    {/* RIGHT IMAGES (Stacked/Overlap Layout) */}
+    {/* RIGHT IMAGES (Staggered Layout) */}
     <div className="w-2/5 relative flex justify-end items-center h-[160px]">
-      {/* Back Image */}
+      {/* Back Image (Soft Background) */}
       <img
         src="https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
-        className="absolute right-8 top-0 h-[100px] w-[70px] object-cover rounded-md border border-white/20 shadow-xl rotate-[-6deg] opacity-60"
-        alt="textile 1"
+        className="absolute right-10 top-0 h-[100px] w-[75px] object-cover rounded shadow-lg rotate-[-8deg] opacity-40 border border-[#E5E7EB]/20"
+        alt="textile back"
       />
-      {/* Middle Image */}
+      {/* Middle Image (Accent border) */}
       <img
         src="https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
-        className="absolute right-4 top-6 h-[110px] w-[80px] object-cover rounded-md border border-white/40 shadow-xl rotate-[4deg] z-[1]"
-        alt="textile 2"
+        className="absolute right-5 top-4 h-[115px] w-[85px] object-cover rounded shadow-xl rotate-[2deg] z-[1] border border-[#C6A75E]/50"
+        alt="textile mid"
       />
-      {/* Front Image */}
+      {/* Front Image (Primary Focus) */}
       <img
         src="https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
-        className="absolute right-0 top-12 h-[120px] w-[90px] object-cover rounded-md border-2 border-white shadow-2xl z-[2]"
-        alt="textile 3"
+        className="absolute right-0 top-10 h-[130px] w-[95px] object-cover rounded shadow-2xl z-[2] border-2 border-[#C6A75E]"
+        alt="textile front"
       />
     </div>
 
