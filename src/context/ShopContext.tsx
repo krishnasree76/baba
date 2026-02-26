@@ -16,6 +16,7 @@ export type Product = {
   category: string;
   size?: string;
   description: string;
+  tag?: 'popular' | 'budget' | 'latest'; // 👈 ADD THIS
   colors: ProductColor[];
 };
 

@@ -64,9 +64,11 @@ useEffect(() => {
   </button>
 
   {/* IMAGE SLIDER */}
-  <div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
+  {/* IMAGE SLIDER */}
+<div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
 
-    <AnimatePresence mode="wait">
+  <AnimatePresence mode="wait">
+    <Link to="/shop">
       <motion.img
         key={current}
         src={images[current]}
@@ -86,11 +88,12 @@ useEffect(() => {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -80 }}
         transition={{ duration: 0.4 }}
-        className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white"
+        className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
       />
-    </AnimatePresence>
+    </Link>
+  </AnimatePresence>
 
-  </div>
+</div>
 
   {/* RIGHT ARROW */}
   <button
@@ -107,23 +110,57 @@ useEffect(() => {
       </section>
 
       {/* 2. DESKTOP HERO SECTION */}
-      <section className="bg-[#0B1C2D] text-white py-20 hidden md:block">
-        <div className="container mx-auto px-4 flex flex-row items-center justify-between gap-12">
-          <div className="flex-1 text-left max-w-2xl">
-            <span className="text-[#C6A75E] tracking-[0.3em] uppercase text-sm font-medium block mb-4">Wholesale Excellence</span>
-            <h1 className="font-serif text-6xl font-bold mb-6">Baba Textiles</h1>
-            <p className="text-[#F8F6F1]/80 text-lg mb-8 italic leading-relaxed">"Best rates and best quality is our motto."</p>
-            <div className="flex items-center gap-6 text-base tracking-widest text-[#C6A75E]">
-              <span>8328030460</span><span className="text-white/20">|</span><span className="text-white">WhatsApp</span>
-            </div>
+     <section className="bg-[#0B1C2D] text-white py-20 hidden md:block">
+  <div className="container mx-auto px-4 flex flex-row items-center justify-between gap-12">
+
+    {/* LEFT SIDE */}
+    <div className="flex-1 text-left max-w-2xl">
+      <span className="text-[#C6A75E] tracking-[0.3em] uppercase text-sm font-medium block mb-4">
+        Wholesale Excellence
+      </span>
+
+      <h1 className="font-serif text-6xl font-bold mb-6">
+        Baba Textiles
+      </h1>
+
+      <p className="text-[#F8F6F1]/80 text-lg mb-8 italic leading-relaxed">
+        "Best rates and best quality is our motto."
+      </p>
+
+      <div className="flex items-center gap-6 text-base tracking-widest text-[#C6A75E]">
+        <span>8328030460</span>
+        <span className="text-white/20">|</span>
+        <span className="text-white">WhatsApp</span>
+      </div>
+    </div>
+
+    {/* RIGHT SIDE – CLICKABLE IMAGES */}
+    <div className="flex-1 flex justify-center gap-5">
+      {[1, 2, 3].map((_, i) => (
+        <Link
+          key={i}
+          to="/shop"
+          className="group bg-white p-1 rounded shadow-xl hover:scale-105 transition duration-300"
+        >
+          <div className="w-40 h-60 overflow-hidden rounded">
+            <img
+              src={
+                i === 0
+                  ? "https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg"
+                  : i === 1
+                  ? "https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg"
+                  : "https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"
+              }
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              alt="textile"
+            />
           </div>
-          <div className="flex-1 flex justify-center gap-5">
-            {[1, 2, 3].map((_, i) => (
-              <div key={i} className="bg-white p-1 rounded shadow-xl"><div className="w-40 h-60 overflow-hidden rounded"><img src={i === 0 ? "https://i.pinimg.com/736x/ac/01/f0/ac01f018c68baad485921f3be55ff704.jpg" : i === 1 ? "https://i.pinimg.com/736x/43/a0/06/43a00620483bf24332775c4cac882b0c.jpg" : "https://i.pinimg.com/1200x/06/01/e8/0601e8c940d1f807d87012d928014afc.jpg"} className="w-full h-full object-cover" alt="textile" /></div></div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* 3. CATEGORIES SECTION */}
       <section className="py-16 bg-[#F8F6F1]">
@@ -165,7 +202,7 @@ useEffect(() => {
       <section className="py-12 md:py-20 bg-[#EFE8DC]/50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="font-serif text-2xl md:text-4xl text-[#0B1C2D] font-bold">Fast Selling Products</h2>
+            <h2 className="font-serif text-2xl md:text-4xl text-[#0B1C2D] font-bold">Popular Collection</h2>
             <Link to="/shop" className="text-[#C6A75E] font-medium flex items-center gap-1 text-sm">View All <ArrowRight size={16} /></Link>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">

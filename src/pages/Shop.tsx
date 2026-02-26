@@ -15,6 +15,7 @@ import React, { useState, useMemo } from 'react';
       const [selectedCategory, setSelectedCategory] = useState(initialCategory);
       const [sortBy, setSortBy] = useState('featured');
       const [selectedSize, setSelectedSize] = useState('');
+      const [selectedCollection, setSelectedCollection] = useState('');
 const [priceRange, setPriceRange] = useState([0, 5000]);
 
       const categories = [
@@ -59,8 +60,13 @@ const [priceRange, setPriceRange] = useState([0, 5000]);
     result.sort((a, b) => b.price - a.price);
   }
 
+  // Collection Filter
+if (selectedCollection) {
+  result = result.filter(p => p.tag === selectedCollection);
+}
+
   return result;
-}, [products, selectedCategory, selectedSize, priceRange, searchQuery, sortBy]);
+}, [products, selectedCategory, selectedSize, priceRange, searchQuery, sortBy, selectedCollection]);
 
       return (
         <div className="bg-baba-softbg min-h-screen pb-20">
@@ -130,6 +136,36 @@ const [priceRange, setPriceRange] = useState([0, 5000]);
         ₹0 — ₹{priceRange[1]}
       </p>
     </div>
+    {/* OUR COLLECTION FILTER */}
+<div className="mb-8">
+  <h3 className="font-semibold text-baba-textdark mb-4 uppercase text-sm tracking-wider">
+    Our Collection
+  </h3>
+
+  <div className="space-y-3">
+    {[
+      { label: 'Popular Collection', value: 'popular' },
+      { label: 'Budget Friendly', value: 'budget' },
+      { label: 'Latest Arrivals', value: 'latest' }
+    ].map(item => (
+      <button
+        key={item.value}
+        onClick={() =>
+          setSelectedCollection(
+            selectedCollection === item.value ? '' : item.value
+          )
+        }
+        className={`block text-left w-full text-sm transition-colors
+          ${selectedCollection === item.value
+            ? 'text-baba-accent font-medium'
+            : 'text-baba-textdark/70 hover:text-baba-primary'}
+        `}
+      >
+        {item.label}
+      </button>
+    ))}
+  </div>
+</div>
 
     {/* CATEGORY FILTER */}
     <div>
@@ -198,7 +234,13 @@ const [priceRange, setPriceRange] = useState([0, 5000]);
                     <h3 className="text-xl font-serif text-baba-primary mb-2">No products found</h3>
                     <p className="text-baba-textdark/60">Try adjusting your search or filters.</p>
                     <button 
-                      onClick={() => { setSelectedCategory('All'); window.history.replaceState({}, '', '/shop'); }}
+                      onClick={() => {
+  setSelectedCategory('All');
+  setSelectedCollection('');
+  setSelectedSize('');
+  setPriceRange([0, 5000]);
+  window.history.replaceState({}, '', '/shop');
+}}
                       className="mt-6 text-baba-accent hover:underline font-medium"
                     >
                       Clear Filters
