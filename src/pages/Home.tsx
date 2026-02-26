@@ -39,75 +39,94 @@ useEffect(() => {
     <div className="w-full bg-[#F8F6F1]">
       {/* 1. MOBILE HERO SECTION */}
       <section className="bg-[#0B1C2D] text-white md:hidden overflow-hidden relative border-b-2 border-[#C6A75E]">
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#C6A75E 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
-        <div className="relative flex items-center px-6 py-10 min-h-[240px] z-10">
-          <div className="w-3/5 pr-2">
-            <h1 className="font-serif text-2xl font-bold leading-tight tracking-wide text-[#C6A75E]">Baba Textiles</h1>
-            <div className="w-8 h-[2px] bg-[#C6A75E] mt-2 mb-3"></div>
-            <p className="text-[#F8F6F1] text-[12px] leading-relaxed font-medium italic">"Best rates and best quality is our motto."</p>
-            <div className="flex flex-col gap-2 mt-6">
-              <a href="tel:8328030460" className="bg-[#C6A75E] text-[#0B1C2D] px-4 py-2 rounded-sm text-[11px] font-bold text-center shadow-md">CALL NOW</a>
-            </div>
-          </div>
-          <div className="w-2/5 flex justify-end items-center h-[160px] relative">
+  <div
+    className="absolute inset-0 opacity-10 pointer-events-none"
+    style={{
+      backgroundImage:
+        'radial-gradient(#C6A75E 0.5px, transparent 0.5px)',
+      backgroundSize: '20px 20px'
+    }}
+  ></div>
 
-  {/* LEFT ARROW */}
-  <button
-    onClick={() =>
-      setCurrent((prev) =>
-        prev === 0 ? images.length - 1 : prev - 1
-      )
-    }
-    className="absolute left-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
-  >
-    <ChevronLeft size={14} className="text-black" />
-  </button>
+  <div className="relative flex items-center px-6 py-10 min-h-[240px] z-10">
 
-  {/* IMAGE SLIDER */}
-  {/* IMAGE SLIDER */}
-<div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
+    <div className="w-3/5 pr-2">
+      <h1 className="font-serif text-2xl font-bold leading-tight tracking-wide text-[#C6A75E]">
+        Baba Textiles
+      </h1>
 
-  <AnimatePresence mode="wait">
-    <Link to="/shop">
-      <motion.img
-        key={current}
-        src={images[current]}
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        onDragEnd={(e, info) => {
-          if (info.offset.x < -50) {
-            setCurrent((prev) => (prev + 1) % images.length);
-          }
-          if (info.offset.x > 50) {
-            setCurrent((prev) =>
-              prev === 0 ? images.length - 1 : prev - 1
-            );
-          }
-        }}
-        initial={{ opacity: 0, x: 80 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -80 }}
-        transition={{ duration: 0.4 }}
-        className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
-      />
-    </Link>
-  </AnimatePresence>
+      <div className="w-8 h-[2px] bg-[#C6A75E] mt-2 mb-3"></div>
 
-</div>
+      <p className="text-[#F8F6F1] text-[12px] leading-relaxed font-medium italic">
+        "Best rates and best quality is our motto."
+      </p>
 
-  {/* RIGHT ARROW */}
-  <button
-    onClick={() =>
-      setCurrent((prev) => (prev + 1) % images.length)
-    }
-    className="absolute right-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
-  >
-    <ChevronRight size={14} className="text-black" />
-  </button>
+      <div className="flex flex-col gap-2 mt-6">
+        <a
+          href="tel:8328030460"
+          className="bg-[#C6A75E] text-[#0B1C2D] px-4 py-2 rounded-sm text-[11px] font-bold text-center shadow-md"
+        >
+          CALL NOW
+        </a>
+      </div>
+    </div>
 
-</div>
-        </div>
-      </section>
+    <div className="w-2/5 flex justify-end items-center h-[160px] relative">
+
+      {/* LEFT ARROW */}
+      <button
+        onClick={() =>
+          setCurrent((prev) =>
+            prev === 0 ? images.length - 1 : prev - 1
+          )
+        }
+        className="absolute left-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
+      >
+        <ChevronLeft size={14} className="text-black" />
+      </button>
+
+      {/* IMAGE SLIDER */}
+      <div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
+        <AnimatePresence mode="wait">
+          <Link to="/shop">
+            <motion.img
+              key={current}
+              src={images[current]}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, info) => {
+                if (info.offset.x < -50) {
+                  setCurrent((prev) => (prev + 1) % images.length);
+                }
+                if (info.offset.x > 50) {
+                  setCurrent((prev) =>
+                    prev === 0 ? images.length - 1 : prev - 1
+                  );
+                }
+              }}
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80 }}
+              transition={{ duration: 0.4 }}
+              className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white"
+            />
+          </Link>
+        </AnimatePresence>
+      </div>
+
+      {/* RIGHT ARROW */}
+      <button
+        onClick={() =>
+          setCurrent((prev) => (prev + 1) % images.length)
+        }
+        className="absolute right-0 z-20 bg-white/80 backdrop-blur-sm p-1 rounded-full shadow-md"
+      >
+        <ChevronRight size={14} className="text-black" />
+      </button>
+
+    </div>
+  </div>
+</section>
 
       {/* 2. DESKTOP HERO SECTION */}
      <section className="bg-[#0B1C2D] text-white py-20 hidden md:block">
