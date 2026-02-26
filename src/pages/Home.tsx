@@ -8,10 +8,11 @@ import womenImage from '../assets/navysaree.png';
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 export default function Home() {
   const { products } = useShop();
   const featuredProducts = products.slice(0, 4);
+  const navigate = useNavigate();
 
   const categories = [
     { name: 'sarees', image: womenImage, link: '/shop?category=sarees' },
@@ -90,26 +91,28 @@ useEffect(() => {
         <AnimatePresence mode="wait">
           <Link to="/shop">
             <motion.img
-              key={current}
-              src={images[current]}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(e, info) => {
-                if (info.offset.x < -50) {
-                  setCurrent((prev) => (prev + 1) % images.length);
-                }
-                if (info.offset.x > 50) {
-                  setCurrent((prev) =>
-                    prev === 0 ? images.length - 1 : prev - 1
-                  );
-                }
-              }}
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -80 }}
-              transition={{ duration: 0.4 }}
-              className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white"
-            />
+  key={current}
+  src={images[current]}
+  drag="x"
+  dragConstraints={{ left: 0, right: 0 }}
+  onDragEnd={(e, info) => {
+    if (info.offset.x < -50) {
+      setCurrent((prev) => (prev + 1) % images.length);
+    } else if (info.offset.x > 50) {
+      setCurrent((prev) =>
+        prev === 0 ? images.length - 1 : prev - 1
+      );
+    } else {
+      // If drag was small → treat as tap
+      navigate("/shop");
+    }
+  }}
+  initial={{ opacity: 0, x: 80 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: -80 }}
+  transition={{ duration: 0.4 }}
+  className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
+/>
           </Link>
         </AnimatePresence>
       </div>
