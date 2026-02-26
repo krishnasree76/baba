@@ -60,26 +60,27 @@ useEffect(() => {
       <div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
         <AnimatePresence mode="wait">
           <motion.img
-            key={current}
-            src={images[current]}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            onDragEnd={(e, info) => {
-              if (info.offset.x < -50) {
-                setCurrent((prev) => (prev + 1) % images.length);
-              }
-              if (info.offset.x > 50) {
-                setCurrent((prev) => prev === 0 ? images.length - 1 : prev - 1);
-              }
-            }}
-            // Link functionality added via onClick
-            onClick={() => window.location.href = '/shop'}
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -80 }}
-            transition={{ duration: 0.4 }}
-            className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
-          />
+  key={current}
+  src={images[current]}
+  drag="x"
+  dragConstraints={{ left: 0, right: 0 }}
+  onDragEnd={(e, info) => {
+    if (info.offset.x < -50) {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }
+    if (info.offset.x > 50) {
+      setCurrent((prev) =>
+        prev === 0 ? images.length - 1 : prev - 1
+      );
+    }
+  }}
+  onClick={() => window.location.href = "/shop"}
+  initial={{ opacity: 0, x: 80 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: -80 }}
+  transition={{ duration: 0.4 }}
+  className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
+/>
         </AnimatePresence>
       </div>
 
