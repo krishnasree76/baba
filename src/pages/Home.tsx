@@ -39,7 +39,7 @@ useEffect(() => {
   return (
     <div className="w-full bg-[#F8F6F1]">
       {/* 1. MOBILE HERO SECTION */}
-      <section className="bg-[#0B1C2D] text-white md:hidden overflow-hidden relative border-b-2 border-[#C6A75E]">
+     <section className="bg-[#0B1C2D] text-white md:hidden overflow-hidden relative border-b-2 border-[#C6A75E]">
   <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#C6A75E 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }}></div>
   <div className="relative flex items-center px-6 py-10 min-h-[240px] z-10">
     <div className="w-3/5 pr-2">
@@ -59,28 +59,28 @@ useEffect(() => {
       {/* IMAGE SLIDER */}
       <div className="overflow-hidden relative w-[100px] h-[140px] flex justify-center items-center">
         <AnimatePresence mode="wait">
-          <motion.img
-  key={current}
-  src={images[current]}
-  drag="x"
-  dragConstraints={{ left: 0, right: 0 }}
-  onDragEnd={(e, info) => {
-    if (info.offset.x < -50) {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }
-    if (info.offset.x > 50) {
-      setCurrent((prev) =>
-        prev === 0 ? images.length - 1 : prev - 1
-      );
-    }
-  }}
-  onClick={() => window.location.href = "/shop"}
-  initial={{ opacity: 0, x: 80 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: -80 }}
-  transition={{ duration: 0.4 }}
-  className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
-/>
+          {/* Wrap the motion element in a Link just like desktop */}
+          <Link to="/shop" className="block w-full h-full">
+            <motion.img
+              key={current}
+              src={images[current]}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, info) => {
+                if (info.offset.x < -50) {
+                  setCurrent((prev) => (prev + 1) % images.length);
+                }
+                if (info.offset.x > 50) {
+                  setCurrent((prev) => prev === 0 ? images.length - 1 : prev - 1);
+                }
+              }}
+              initial={{ opacity: 0, x: 80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -80 }}
+              transition={{ duration: 0.4 }}
+              className="absolute w-full h-full object-cover rounded shadow-xl border-4 border-white cursor-pointer"
+            />
+          </Link>
         </AnimatePresence>
       </div>
 
